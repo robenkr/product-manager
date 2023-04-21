@@ -1,1 +1,10 @@
-<p>products works!</p>
+<h1>Products list</h1>
+<div class="mb-2">
+  <a [routerLink]="['/products', 'add']"
+     class="btn btn-sm btn-dark text-white">
+    <span>Add Product</span>
+  </a>
+</div>
+<div class="table-responsive">
+  <app-product [products]="products"></app-product>
+</div>

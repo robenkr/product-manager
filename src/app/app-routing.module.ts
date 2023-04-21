@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ProductAddComponent } from './products/product-add.component';
-import { ProductSingleComponent } from './products/product-single.component';
-import { ProductsComponent } from './products/products.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ProductAddComponent} from './products/product-add.component';
+import {ProductSingleComponent} from './products/product-single.component';
+import {ProductsComponent} from './products/products.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  {path: '', component: ProductsComponent},
   {
     path: 'products',
     children: [
@@ -30,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

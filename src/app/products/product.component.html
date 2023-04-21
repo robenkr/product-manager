@@ -1,1 +1,43 @@
-<p>product works!</p>
+<table *ngIf="products.length !== 0" class="table table-striped table-hover">
+  <thead>
+  <tr class="table-dark">
+    <th scope="col">Image</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Status</th>
+    <th scope="col">Store</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td><img alt="{{product.name | titlecase}}" src="{{product.imageUrl}}" style="max-height: 50px;"></td>
+    <td>{{product.name | titlecase}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.quantity}}</td>
+    <td [ngSwitch]="product.available">
+      <span *ngSwitchCase="true" class="badge bg-success">Enable</span>
+      <span *ngSwitchCase="false" class="badge bg-danger">Disabled</span>
+    </td>
+    <td>{{product.storeName}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<table *ngIf="products.length === 0" class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Image</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Status</th>
+    <th scope="col">Store</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
