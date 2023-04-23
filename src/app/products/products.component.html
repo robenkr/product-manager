@@ -1,10 +1,22 @@
-<h1>Products list</h1>
-<div class="mb-2">
-  <a [routerLink]="['/products', 'add']"
-     class="btn btn-sm btn-dark text-white">
-    <span>Add Product</span>
-  </a>
-</div>
-<div class="table-responsive">
-  <app-product [products]="products"></app-product>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox ">
+      <div class="ibox-title">
+        <h4>Products List</h4>
+        <div class="ibox-tools">
+          <a [routerLink]="['/products', 'add']"
+             class="btn btn-sm btn-dark text-white">
+            <span>Add Product</span>
+          </a>
+        </div>
+      </div>
+      <div class="ibox-content">
+        <div class="table-responsive">
+          <app-product [products]="products"></app-product>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </div>

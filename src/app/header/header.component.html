@@ -1,17 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a [routerLink]="['']" class="navbar-brand" href="#">{{title}}</a>
-    <button aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-            data-bs-target="#navbarColor01" data-bs-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a [routerLink]="['/products']" class="nav-link active" href="#">Products
-            <span class="visually-hidden">(current)</span></a>
-        </li>
-      </ul>
+<div class="row border-bottom">
+  <nav class="navbar navbar-static-top bg-dark" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header ml-4 mt-2">
+      <a [routerLink]="['']" class="navbar-brand text-white font-bold">{{title}}</a>
     </div>
-  </div>
-</nav>
+    <ul class="nav navbar-top-links navbar-right">
+      <li>
+        <a [routerLink]="['/products']" class="text-white font-weight-bold m-r-lg">Products</a>
+      </li>
+
+      <li>
+        <a [routerLink]="['/products']">
+          <i class="fa fa-sign-out"></i> Log out
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

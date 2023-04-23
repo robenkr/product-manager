@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-12">
-    <h2>Add Product</h2>
+    <h2>Edit Product</h2>
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a [routerLink]="['/']">Home</a>
@@ -9,18 +9,19 @@
         <a [routerLink]="['/products']">Products</a>
       </li>
       <li class="breadcrumb-item active">
-        <strong>Add Product</strong>
+        <strong>Edit Product</strong>
       </li>
     </ol>
   </div>
 </div>
+
 
 <div class="wrapper wrapper-content">
   <div class="row">
     <div class="col-lg-12">
       <div class="ibox container">
         <div class="ibox-title">
-          <h5>Ajouter Produit</h5>
+          <h5>Edit Produit</h5>
           <div class="ibox-tools">
           </div>
         </div>
@@ -128,8 +129,8 @@
               <div class="col-sm-4 col-sm-offset-2">
                 <a [routerLink]="['/products']" class="btn btn-white border mr-1 btn-sm">Cancel</a>
                 <button [disabled]="!productForm.valid"
-                        [title]="productForm.valid ? 'Add Product' : 'Disable until valid form data'"
-                        class="btn btn-success btn-sm" type="submit">Create
+                        [title]="productForm.valid ? 'Modify Product' : 'Disable until valid form data'"
+                        class="btn btn-success btn-sm" type="submit">Edit
                 </button>
               </div>
             </div>
