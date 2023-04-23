@@ -1,1 +1,70 @@
-<p>product-single works!</p>
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-12">
+    <h2>Product detail</h2>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/']">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/products']">Products</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <strong>Product detail</strong>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="ibox product-detail">
+        <div class="ibox-content">
+
+          <div class="row">
+            <div class="col-md-5">
+
+
+              <div class="product-images">
+                <img height="345" src="{{productDraft.imageUrl}}">
+              </div>
+
+            </div>
+            <div class="col-md-7">
+
+              <h2 class="font-bold m-b-xs">
+                {{productDraft.name | titlecase}}
+              </h2>
+              <small>Store : {{productDraft.storeName}}</small>
+              <div class="m-t-md">
+                <h2 class="product-main-price">${{productDraft.price}} <small
+                  class="text-muted">{{productDraft.available ? 'Available' : 'Finished'}}</small>
+                </h2>
+              </div>
+              <hr>
+
+              <h4>Product description</h4>
+
+              <div class="small text-muted">
+                {{productDraft.description}}
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="ibox-footer">
+          <span class="float-right">
+              {{productDraft.quantity}} In Stock - {{productDraft.createdAt.toDateString()}}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
