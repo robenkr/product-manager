@@ -9,7 +9,7 @@ import {ProductAddComponent} from './products/product-add.component';
 import {ProductSingleComponent} from './products/product-single.component';
 import {HeaderComponent} from './header/header.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ProductEditComponent } from './products/product-edit.component';
+import {ProductEditComponent} from './products/product-edit.component';
 
 @NgModule({
   declarations: [
