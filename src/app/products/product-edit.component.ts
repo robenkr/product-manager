@@ -23,7 +23,7 @@ export class ProductEditComponent implements OnInit {
     storeName: 'Ampire Store',
     createdAt: new Date(),
     updatedAt: null
-  }
+  };
   subscriptions: Subscription = new Subscription();
   productId: string | null = '';
 
