@@ -19,7 +19,7 @@ const routes: Routes = [
         component: ProductAddComponent
       },
       {
-        path: ':id',
+        path: ':uid',
         children: [
           {
             path: '',
