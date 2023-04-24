@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const product = require('./src/app/queries/product.queries')
+
 // handling CORS
 const corsOptions = {
   origin: 'http://localhost:4200',
@@ -21,6 +23,12 @@ app.get('/api/welcome', (req, res) => {
       'HI Roben, I test the Express server!'
   });
 });
+
+app.get('/api/products', product.getProducts);
+app.get('/api/products/:uid', product.getProductById);
+app.post('/api/products', product.createProduct);
+app.put('/api/products/:uid', product.updateProduct);
+app.delete('/api/products/:uid', product.deleteProduct);
 
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
