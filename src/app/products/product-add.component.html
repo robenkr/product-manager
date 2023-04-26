@@ -134,6 +134,12 @@
               </div>
             </div>
 
+            <div *ngIf="errorMessages.length !== 0">
+              <div *ngFor="let error of errorMessages">
+                <span class="badge badge-danger text-white mb-1">{{error | titlecase}}</span>
+              </div>
+            </div>
+
           </form>
         </div>
       </div>

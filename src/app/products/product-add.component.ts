@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Product} from "../models/product.model";
 import {uid} from "uid";
 import {ProductsService} from "../services/products.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-add',
@@ -13,8 +14,10 @@ export class ProductAddComponent implements OnInit {
 
   productForm: FormGroup = new FormGroup([]);
   uid: string = '';
+  errorMessages: string[] = [];
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -48,11 +51,16 @@ export class ProductAddComponent implements OnInit {
       created_at: new Date(),
       updated_at: null
     };
-    console.log(product);
 
-    this.productsService.addProduct(product).subscribe((res) => {
-      console.log('#After ADD=> ', res);
+    this.productsService.addProduct(product).subscribe((res: any) => {
       this.productForm.reset();
+      this.router.navigate(['/products']).then(() => console.log('Product Add Successfully', res))
+    }, err => {
+      if (err.error !== undefined) {
+        err.error.errors.map((e: any) => {
+          this.errorMessages.push(e.msg);
+        });
+      }
     });
   }
 
