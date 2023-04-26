@@ -1,3 +1,4 @@
+const {check, validationResult} = require('express-validator')
 // Database connexion info
 const {Pool} = require("pg");
 const pool = new Pool({
@@ -26,16 +27,27 @@ pool.connect((err, client, release) => {
 
 
 const createProduct = (request, response) => {
-  const {uid, name, description, price, image, quantity, available, store, created_at} = request.body
-  pool.query(`INSERT INTO product(uid, name, description, price, image, quantity, available, store, created_at)
-              VALUES ($1, $2, $3, $4, $5, $6, $7, $8,
-                      $9)`, [uid, name, description, price, image, quantity, available, store, created_at],
-    (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(201).send(request.body);
-    })
+  try {
+    const errors = validationResult(request);
+    if (!errors.isEmpty()) {
+      return response.status(400).json({
+        errors: errors.array()
+      });
+    }
+    const {uid, name, description, price, image, quantity, available, store, created_at} = request.body
+    pool.query(`INSERT INTO product(uid, name, description, price, image, quantity, available, store, created_at)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8,
+                        $9)`, [uid, name, description, price, image, quantity, available, store, created_at],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        response.status(201).send(request.body);
+      })
+  } catch (err) {
+    return next(err);
+  }
+
 }
 
 const getProducts = (request, response) => {
@@ -98,7 +110,32 @@ const deleteProduct = (request, response) => {
     });
 }
 
+const validate = (method) => {
+  switch (method) {
+    case 'createProduct': {
+      return [
+        check('uid').notEmpty().withMessage('Uid is required').isLength({min: 10}).withMessage('uid must be at least 10 characters'),
+        check('name').notEmpty().withMessage('Product name is required').isLength({min: 3}).withMessage('Product name must be at least 3 characters'),
+        check('price').notEmpty().withMessage('The price is required').isDecimal().withMessage('The price must be a decimal'),
+        check('quantity').notEmpty().withMessage('The quantity is required').isInt(),
+        check('available').notEmpty(),
+        check('store').notEmpty().withMessage('Product\'s store name is required')
+      ]
+    }
+
+    case 'updateProduct': {
+      return [
+        check('name').notEmpty().withMessage('Product name is required').isLength({min: 3}).withMessage('Product name must be at least 3 characters'),
+        check('price').notEmpty().withMessage('The price is required').isDecimal().withMessage('The price must be a decimal'),
+        check('quantity').notEmpty().withMessage('The quantity is required').isInt(),
+        check('available').notEmpty(),
+        check('store').notEmpty().withMessage('Product\'s store name is required'),
+      ]
+    }
+  }
+};
+
 module.exports = {
   createProduct, updateProduct,
-  deleteProduct, getProducts, getProductById
+  deleteProduct, getProducts, getProductById, validate
 }
