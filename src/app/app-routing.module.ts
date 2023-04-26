@@ -4,9 +4,11 @@ import {ProductAddComponent} from './products/product-add.component';
 import {ProductsComponent} from './products/products.component';
 import {ProductEditComponent} from "./products/product-edit.component";
 import {ProductSingleComponent} from "./products/product-single.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {path: '', component: ProductsComponent},
+  {path: 'login', component: LoginComponent},
   {
     path: 'products',
     children: [
@@ -33,6 +35,7 @@ const routes: Routes = [
       }
     ]
   },
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
