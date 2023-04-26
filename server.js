@@ -26,8 +26,8 @@ app.get('/api/welcome', (req, res) => {
 
 app.get('/api/products', product.getProducts);
 app.get('/api/products/:uid', product.getProductById);
-app.post('/api/products', product.createProduct);
-app.put('/api/products/:uid', product.updateProduct);
+app.post('/api/products', product.validate('createProduct'), product.createProduct);
+app.put('/api/products/:uid', product.validate('updateProduct'), product.updateProduct);
 app.delete('/api/products/:uid', product.deleteProduct);
 
 app.listen(3000, () => {
