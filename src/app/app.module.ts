@@ -11,6 +11,7 @@ import {HeaderComponent} from './header/header.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductEditComponent} from './products/product-edit.component';
 import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     ProductAddComponent,
     ProductSingleComponent,
     HeaderComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
