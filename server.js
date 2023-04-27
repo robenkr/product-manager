@@ -17,12 +17,14 @@ app.use(cors(corsOptions))
 app.use(bodyParser.json());
 
 // route for handling requests from the Angular client
-app.get('/api/welcome', (req, res) => {
+app.get('/', (req, res) => {
   res.json({
     message:
-      'HI Roben, I test the Express server!'
+      'Hi, Welcome in the Express server!'
   });
 });
+
+app.post('/api/login', product.validate('login'), product.login);
 
 app.get('/api/products', product.getProducts);
 app.get('/api/products/:uid', product.getProductById);

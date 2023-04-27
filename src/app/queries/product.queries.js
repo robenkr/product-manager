@@ -10,6 +10,8 @@ const pool = new Pool({
   port: 5432
 })
 
+const jwt = require('jsonwebtoken');
+
 pool.connect((err, client, release) => {
   if (err) {
     return console.error(
@@ -25,6 +27,48 @@ pool.connect((err, client, release) => {
   })
 })
 
+const login = async (request, response, next) => {
+  let {email, password} = request.body;
+
+  console.log('#@@>', request.body);
+  let existingUser;
+  try {
+    existingUser = await pool.query(`SELECT *
+                                     FROM user
+                                     WHERE email = $1`, [email]);
+  } catch {
+    const error = new Error("Error! User not found.");
+    return next(error);
+  }
+  console.log('#@>', existingUser);
+
+  if (!existingUser || (existingUser.password !== password)) {
+    const error = Error("Wrong details please check at once");
+    return next(error);
+  }
+  let token;
+  try {
+    //Creating jwt token
+    token = jwt.sign(
+      {userUid: existingUser.uid, email: existingUser.email},
+      "secretkeyappearshere",
+      {expiresIn: "1h"}
+    );
+  } catch (err) {
+    console.log(err);
+    const error = new Error("Error! Something went wrong.");
+    return next(error);
+  }
+
+  response.status(200).json({
+    success: true,
+    data: {
+      userId: existingUser.id,
+      email: existingUser.email,
+      token: token,
+    },
+  })
+};
 
 const createProduct = (request, response) => {
   try {
@@ -132,10 +176,17 @@ const validate = (method) => {
         check('store').notEmpty().withMessage('Product\'s store name is required'),
       ]
     }
+
+    case 'login': {
+      return [
+        check('email').isLength({min: 10, max: 30}).withMessage('Email length should be 10 to 30 characters').isEmail(),
+        check('password').isLength({min: 8, max: 16}).withMessage('Password length should be 8 to 10 characters'),
+      ]
+    }
   }
 };
 
 module.exports = {
   createProduct, updateProduct,
-  deleteProduct, getProducts, getProductById, validate
+  deleteProduct, getProducts, getProductById, validate, login
 }
