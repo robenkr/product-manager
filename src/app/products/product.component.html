@@ -13,7 +13,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let product of products">
-    <td><img alt="{{product.name | titlecase}}" src="{{product.imageUrl}}" style="max-height: 50px;"></td>
+    <td><img alt="{{product.name | titlecase}}" src="{{product.image}}" style="max-height: 50px;"></td>
     <td>{{product.name | titlecase}}</td>
     <td>{{product.description}}</td>
     <td>{{product.price}}</td>
@@ -22,13 +22,13 @@
       <span *ngSwitchCase="true" class="label label-primary">Enable</span>
       <span *ngSwitchCase="false" class="label label-danger">Disabled</span>
     </td>
-    <td>{{product.storeName}}</td>
+    <td>{{product.store}}</td>
     <td>
-      <a [routerLink]="['/products', product?.id]"
+      <a [routerLink]="['/products', product?.uid]"
          class="btn btn-dark btn-xs m-1" data-placement="bottom" data-toggle="tooltip"
          title="Product's Details"> Detail</a>
       <span>
-        <a [routerLink]="['/products',product?.id, 'edit']"
+        <a [routerLink]="['/products',product?.uid, 'edit']"
            class="btn btn-success btn-xs text-white m-0" data-placement="bottom" data-toggle="tooltip"
            title="Modify product"> Edit</a>
       </span>

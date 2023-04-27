@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="ibox-content">
-        <div class="table-responsive">
+        <div *ngIf="products$ | async as products" class="table-responsive">
           <app-product [products]="products"></app-product>
         </div>
 

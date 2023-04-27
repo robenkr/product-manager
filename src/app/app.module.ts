@@ -10,6 +10,8 @@ import {ProductSingleComponent} from './products/product-single.component';
 import {HeaderComponent} from './header/header.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductEditComponent} from './products/product-edit.component';
+import {HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import {ProductEditComponent} from './products/product-edit.component';
     ProductAddComponent,
     ProductSingleComponent,
     HeaderComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

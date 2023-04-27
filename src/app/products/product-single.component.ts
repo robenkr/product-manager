@@ -1,39 +1,46 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../models/product.model";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {ProductsService} from "../services/products.service";
 
 @Component({
   selector: 'app-product-single',
   templateUrl: './product-single.component.html',
   styleUrls: ['./product-single.component.css']
 })
-export class ProductSingleComponent implements OnInit {
+export class ProductSingleComponent implements OnInit, OnDestroy {
 
-  productDraft: Product = {
-    id: '1',
-    name: 'Product 1',
-    description: ' Product 1 - description',
-    price: 10,
-    available: true,
-    imageUrl: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    quantity: 100,
-    storeName: 'Ampire Store',
-    createdAt: new Date(),
-    updatedAt: null
-  };
+  // @ts-ignore
+  product: Product;
   subscriptions: Subscription = new Subscription();
-  productId: string | null = '';
+  productId: string = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private productService: ProductsService) {
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       token => {
-        this.productId = token.get('id');
+        // @ts-ignore
+        this.productId = token.get('uid');
+        this.subscriptions.add(
+          this.productService.getProduct(this.productId).subscribe(
+            (product) => {
+              if (product !== null) {
+                this.product = product;
+              }
+
+            })
+        );
+
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }

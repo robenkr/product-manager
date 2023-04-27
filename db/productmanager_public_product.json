@@ -1,0 +1,74 @@
+[
+  {
+    "uid": "5fcba223f6",
+    "name": "iPhone 13 Pro Max",
+    "description": "it's a phone",
+    "price": 1285,
+    "quantity": 0,
+    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    "available": true,
+    "store": "Ampire Store",
+    "created_at": "2023-04-23 12:51:04.986000",
+    "updated_at": "2023-04-24 15:16:12.869000"
+  },
+  {
+    "uid": "e46bace41c",
+    "name": "iPhone 12 Pro Max",
+    "description": "it's a phone",
+    "price": 1100,
+    "quantity": 10,
+    "image": "https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80",
+    "available": true,
+    "store": "Ampire Store",
+    "created_at": "2023-04-24 00:54:23.135000",
+    "updated_at": null
+  },
+  {
+    "uid": "9d338ac7bd",
+    "name": "Produt-test",
+    "description": "nothind special",
+    "price": 100,
+    "quantity": 29,
+    "image": "C:\\fakepath\\photo_2022-12-13_11-54-57.jpg",
+    "available": true,
+    "store": "Ampire Store",
+    "created_at": "2023-04-25 22:10:27.892000",
+    "updated_at": null
+  },
+  {
+    "uid": "17bdcdb223",
+    "name": "second test",
+    "description": "it's so many things!",
+    "price": 10,
+    "quantity": 100,
+    "image": "C:\\fakepath\\photo_2022-12-13_11-54-57.jpg",
+    "available": true,
+    "store": "Ampire Store",
+    "created_at": "2023-04-26 11:12:11.248000",
+    "updated_at": null
+  },
+  {
+    "uid": "1db12e6538",
+    "name": "New stars",
+    "description": "nothind special",
+    "price": 7866,
+    "quantity": 98,
+    "image": "C:\\fakepath\\photo_2022-12-13_11-54-57.jpg",
+    "available": true,
+    "store": "Ampire Store",
+    "created_at": "2023-04-26 12:21:43.435000",
+    "updated_at": null
+  },
+  {
+    "uid": "f0c57e86d6",
+    "name": "Test 003",
+    "description": "nothind special",
+    "price": 45,
+    "quantity": 567,
+    "image": "C:\\fakepath\\photo_2023-02-03_13-02-42.jpg",
+    "available": true,
+    "store": "Ampire Store",
+    "created_at": "2023-04-26 12:28:45.401000",
+    "updated_at": null
+  }
+]

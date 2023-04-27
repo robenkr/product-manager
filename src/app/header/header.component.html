@@ -7,9 +7,13 @@
       <li>
         <a [routerLink]="['/products']" class="text-white font-weight-bold m-r-lg">Products</a>
       </li>
-
-      <li>
-        <a [routerLink]="['/products']">
+      <li *ngIf="!user">
+        <a [routerLink]="['/login']">
+          <i class="fa fa-sign-out"></i> Login
+        </a>
+      </li>
+      <li *ngIf="user">
+        <a (click)="logout()">
           <i class="fa fa-sign-out"></i> Log out
         </a>
       </li>

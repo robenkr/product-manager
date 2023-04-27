@@ -5389,10 +5389,6 @@ body.full-height-layout #page-wrapper {
   min-height: auto;
 }
 
-body.boxed-layout {
-  background: url('patterns/shattered.png');
-}
-
 body.boxed-layout #wrapper {
   background-color: #2f4050;
   max-width: 1200px;
